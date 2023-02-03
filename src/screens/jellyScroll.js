@@ -45,12 +45,13 @@ const JellyScroll = () => {
     onScroll: (event, ctx) => {
       const now = new Date().getTime();
           const {y} = event.contentOffset;
-          const dt = now - (ctx?.time ?? 0);
-        
-          const dy= now - (ctx?.y ?? 0);
-          const v = dy / dt;
-
-            console.log('v', v);
+          const dt = (ctx?.time ?? 0);
+          const dy= (ctx?.y ?? 0);
+          const v = dy/dt;
+        if (isNaN(v)){
+            console.log({dt,dy});
+        }
+           
           direction.value = Math.sign(v)
           ctx.time = now;
           ctx.y = y;
@@ -66,7 +67,7 @@ const JellyScroll = () => {
 //     const {y} = event.contentOffset;
 //     const dt = now - (ctx?.time ?? 0);
 //     const dy= now - (ctx?.y ?? 0);
-//     velocity.value = dy / dt;
+//      velocity.value = dy-dt
 //     ctx.time = now;
 //     ctx.y = y;
 //   });
@@ -74,19 +75,18 @@ const JellyScroll = () => {
 
 
   return (
-    <Animated.ScrollView  onScroll={scrollHandler} scrollEventThrottle={16}>
+    <Animated.ScrollView  onScroll={scrollHandler} scrollEventThrottle={1}>
       {cards.map((item,index) => {
        
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const style = useAnimatedStyle(() => {
 
-          const skewY = withSpring(
-            interpolate(
+          const skewY =interpolate (
               direction.value,
-              [-5, 0, 5],
-              [-Math.PI / 9, 0, Math.PI / 9],
-            ),
-          );
+              [-1, 0, 1],
+              [-Math.PI / 18, 0, Math.PI / 18]
+          )
+          
            
           return {
             transform: [{ skewY: `${skewY}rad` }],

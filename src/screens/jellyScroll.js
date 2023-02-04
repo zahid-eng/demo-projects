@@ -45,8 +45,8 @@ const JellyScroll = () => {
     onScroll: (event, ctx) => {
       const now = new Date().getTime();
           const {y} = event.contentOffset;
-          const dt = (ctx?.time ?? 0);
-          const dy= (ctx?.y ?? 0);
+          const dt = now-( ctx?.time ?? 0);
+          const dy= now- (ctx?.y ?? 0);
           const v = dy/dt;
         if (isNaN(v)){
             console.log({dt,dy});

@@ -36,11 +36,13 @@ import Condional_Rendering from './src/components/condional_Rendering';
 import RichText from './src/components/RichText';
 import RichTextScreen from './src/screens/richTextScreen';
 import JellyScroll from './src/screens/jellyScroll';
+import ItemAnimated from './src/itemAnimated';
+import BottomSheetMOdal from './src/components/bottomSheetModal';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <JellyScroll/>
+      <ItemAnimated/>
     </Provider>
   );
 };

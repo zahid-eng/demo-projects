@@ -58,7 +58,7 @@ const ItemAnimated = () => {
     Animated.sequence([
       Animated.timing(opacity, {
         toValue: 1,
-        duration: 500,
+        duration: 1000,
         useNativeDriver: true,
       }),
     ]).start(() => {

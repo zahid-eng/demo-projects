@@ -7,7 +7,10 @@
 
 import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
-import {Provider} from 'react-redux';
+import { Provider as StoreProvider } from 'react-redux';
+
+import {Provider as PaperProvider} from 'react-native-paper';
+
 import {
   FlatList,
   SafeAreaView,
@@ -38,12 +41,17 @@ import RichTextScreen from './src/screens/richTextScreen';
 import JellyScroll from './src/screens/jellyScroll';
 import ItemAnimated from './src/itemAnimated';
 import BottomSheetMOdal from './src/components/bottomSheetModal';
+import AnimatedScreen from './src/screens/animatedScreen';
+import AnimatedScreen2 from './src/screens/animatedScreen2';
+import SpeechToText from './src/components/speechToText';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <ItemAnimated/>
-    </Provider>
+    <StoreProvider store={store}>
+      <PaperProvider>
+        <SpeechToText/>
+      </PaperProvider>
+    </StoreProvider>
   );
 };
 

@@ -7,7 +7,7 @@
 
 import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
-import { Provider as StoreProvider } from 'react-redux';
+import {Provider as StoreProvider} from 'react-redux';
 
 import {Provider as PaperProvider} from 'react-native-paper';
 
@@ -44,12 +44,13 @@ import BottomSheetMOdal from './src/components/bottomSheetModal';
 import AnimatedScreen from './src/screens/animatedScreen';
 import AnimatedScreen2 from './src/screens/animatedScreen2';
 import SpeechToText from './src/components/speechToText';
+import ImagetoText from './src/components/imageTotext';
 
 const App = () => {
   return (
     <StoreProvider store={store}>
       <PaperProvider>
-        <SpeechToText/>
+        <ImagetoText />
       </PaperProvider>
     </StoreProvider>
   );

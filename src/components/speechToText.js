@@ -14,8 +14,8 @@ import {
   Pressable,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-import icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Avatar, Searchbar} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Avatar, IconButton, Searchbar} from 'react-native-paper';
 import {MotiView} from 'moti';
 import {Easing} from 'react-native-reanimated';
 
@@ -25,8 +25,7 @@ const _color = '#6E01EF';
 const _size = 100;
 
 const SpeechToText = () => {
-  let silenceTimer = useRef(null);
-  const Icon = 'microphone';
+  // let silenceTimer = useRef(null);
   const Texthide1 = () => <Text>Listening</Text>;
   const Texthide2 = () => (
     <Text style={{color: 'red'}}>Didn't Catch Please Try Again Later</Text>
@@ -36,7 +35,7 @@ const SpeechToText = () => {
     {id: 2, name: 'India'},
     {id: 4, name: 'Australia'},
     {id: 5, name: 'denMark'},
-    {id: 6, name: 'USa'},
+    {id: 6, name: 'USA'},
     {id: 7, name: 'Canada'},
     {id: 8, name: 'Malaysia'},
     {id: 9, name: 'Nepal'},
@@ -164,7 +163,7 @@ const SpeechToText = () => {
       <Searchbar
         style={styles.searchBarStyle}
         value={searchBoxValue}
-        icon={Icon}
+        icon={'microphone'}
         placeholder="Search"
         onIconPress={() => {
           Iconpress();
@@ -178,6 +177,21 @@ const SpeechToText = () => {
       <Modal transparent={true} animationType={'slide'} visible={isclicked}>
         <View style={[styles.modalfirstView]}>
           <View style={[styles.modalSecondView]}>
+            <IconButton
+              size={20}
+              onPress={() => {
+                setIsClicked(!isclicked);
+              }}
+              iconColor="white"
+              icon={'close'}
+              style={{
+                position: 'absolute',
+                backgroundColor: 'red',
+                top: 10,
+                right: 10,
+              }}
+            />
+
             <View style={[styles.dot, styles.center]}>
               {[...Array(count).keys()].map(index => {
                 return (
@@ -198,7 +212,7 @@ const SpeechToText = () => {
               })}
               <Avatar.Icon
                 size={40}
-                icon={Icon}
+                icon={'microphone'}
                 style={{backgroundColor: _color}}
               />
             </View>
@@ -315,7 +329,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     justifyContent: 'center',
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2,
     },
     shadowOpacity: 0.25,

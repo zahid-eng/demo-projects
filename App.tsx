@@ -46,11 +46,14 @@ import AnimatedScreen2 from './src/screens/animatedScreen2';
 import SpeechToText from './src/components/speechToText';
 import ImagetoText from './src/components/imageTotext';
 
+import HomeScreen from './src/screens/inAppPurchase';
+import ShakeTextInput from './src/components/shakeTextInput';
+
 const App = () => {
   return (
     <StoreProvider store={store}>
       <PaperProvider>
-        <ImagetoText />
+        <Home />
       </PaperProvider>
     </StoreProvider>
   );
